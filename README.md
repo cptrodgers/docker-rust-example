@@ -7,6 +7,7 @@ This example will help you to create a docker base for run testing, deployment i
 I assume that you are using rust 1.42.
 ```shell script
 docker tag rust:1.42 rust-base:1.42
+ssh-add -K ~/.ssh/id_rsa
 ```
 
 ## Build
@@ -40,6 +41,15 @@ The output will look like:
  => => exporting layers                                                                                                                                                0.5s
  => => writing image sha256:68f3eec19813f48992708bd0e6137626c092f1603eb80cd0d755a301011abd70                                                                           0.0s
  => => naming to docker.io/library/rust-base:1.42                                                                                                                      0.0s
+```
+
+## Note:
+If you have a problem with ssh config, you can try to put this config into ssh config file:
+```shell script
+Host *
+UseKeychain yes
+AddKeysToAgent yes
+IdentityFile ~/.ssh/id_rsa
 ```
 
 This is the blog that explains for this example. [Link](https://rodgers.zone/using-docker-and-git-in-rust-project/)
